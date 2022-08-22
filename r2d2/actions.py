@@ -1,7 +1,7 @@
 import webbrowser
 import main
 
-def open_web_browser():
+def open_youtube():
     return webbrowser.open('https://www.youtube.com/')
 
 
