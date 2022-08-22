@@ -1,18 +1,18 @@
 import speech_recognition as sr
-import re
-import actions
+import webbrowser
 
 speech_recognizer = sr.Recognizer()
+
+
+def search_query():
+    return webbrowser.open_new_tab('https://www.google.com/search?q={}'.format(query))
+
 
 with sr.Microphone() as source:
     audio = speech_recognizer.listen(source)
     query = speech_recognizer.recognize_google(audio_data=audio, language='ru-RU').lower()
 
-
-
-if query == 'открой youtube':
-    print(actions.open_web_browser())
-if query == 'найди прогноз погоды':
-    print(actions.search_query())
+if 'найди' in query:
+    search_query()
 else:
-    print('настрой нормально уровень шума и таймаут!')
+    print('действий нет')
